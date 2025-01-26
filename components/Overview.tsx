@@ -19,17 +19,17 @@ export function Overview({
 }: OverviewProps) {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      <Card>
+      <Card className="bg-[#227f9d] text-white">
         <CardHeader>
-          <CardTitle className="text-cyan-900">Total Schools Monitored</CardTitle>
+          <CardTitle>Total Schools Monitored</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-3xl font-bold text-cyan-700">{totalSchools}</div>
+          <div className="text-3xl font-bold">{totalSchools}</div>
         </CardContent>
       </Card>
-      <Card>
+      <Card className="bg-[#227f9d] text-white">
         <CardHeader>
-          <CardTitle className="text-cyan-900">Connectivity Distribution</CardTitle>
+          <CardTitle>Connectivity Distribution</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-2">
@@ -38,32 +38,32 @@ export function Overview({
                 <span>Good</span>
                 <span>{connectivityDistribution.good}%</span>
               </div>
-              <Progress value={connectivityDistribution.good} className="h-2 bg-cyan-100" />
+              <Progress value={connectivityDistribution.good} className="h-2 bg-white" />
             </div>
             <div>
               <div className="flex justify-between">
                 <span>Fair</span>
                 <span>{connectivityDistribution.fair}%</span>
               </div>
-              <Progress value={connectivityDistribution.fair} className="h-2 bg-cyan-100" />
+              <Progress value={connectivityDistribution.fair} className="h-2 bg-white" />
             </div>
             <div>
               <div className="flex justify-between">
                 <span>Poor</span>
                 <span>{connectivityDistribution.poor}%</span>
               </div>
-              <Progress value={connectivityDistribution.poor} className="h-2 bg-cyan-100" />
+              <Progress value={connectivityDistribution.poor} className="h-2 bg-white" />
             </div>
           </div>
         </CardContent>
       </Card>
-      <Card>
+      <Card className="bg-[#227f9d] text-white">
         <CardHeader>
-          <CardTitle className="text-cyan-900">Average Risk Score</CardTitle>
+          <CardTitle>Average Risk Score</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-3xl font-bold">{averageRiskScore.toFixed(1)}</div>
-          <Progress value={(averageRiskScore / 5) * 100} className="h-2 mt-2 bg-cyan-100" />
+          <Progress value={(averageRiskScore / 5) * 100} className="h-2 mt-2 bg-white" />
         </CardContent>
       </Card>
     </div>
