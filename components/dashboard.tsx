@@ -5,9 +5,7 @@ export default function Dashboard() {
   return (
     <div
       className="min-h-screen p-8 bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/--CjJcdFBNJcjFjRd6FwwJpRB3jwebCe.png')`,
-      }}
+     
     >
       <header className="mb-8 relative">
         <div className="absolute top-0 right-0">
