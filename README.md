@@ -108,11 +108,12 @@ Copy
 ### Additional AI Endpoints
 Update your frontend or API clients to send requests to the following AI endpoints:
 
-# /api/analyze-network/<ip-address> for real-time analysis.
-
-# /api/predictive-alerts/<ip-address> for predictive maintenance alerts.
-
-# /api/optimize-resources/<ip-address> for resource optimization recommendations.
+### Route 5:
+/api/analyze-network/<ip-address> for real-time analysis.
+### Route 6:
+ /api/predictive-alerts/<ip-address> for predictive maintenance alerts.
+### Route 7:
+ /api/optimize-resources/<ip-address> for resource optimization recommendations.
 
 
 
