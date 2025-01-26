@@ -1,16 +1,18 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
-import { signOut } from "next-auth/react"
+import { Sidebar } from "@/components/Sidebar"
+import { Overview } from "@/components/Overview"
+import { MonitoringMap } from "@/components/MonitoringMap"
+import { AlertSection } from "@/components/AlertSection"
+import { NetworkMetrics } from "@/components/NetworkMetrics"
+import { PredictiveMaintenance } from "@/components/PredictiveMaintenance"
 import { NetworkHealth } from "@/components/NetworkHealth"
-import { AlertStatus } from "@/components/AlertStatus"
 import { PerformanceAnalysis } from "@/components/PerfomanceAnalysis"
 import { Settings } from "@/components/Settings"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { NetworkAnalysis } from "@/components/NetworkAnalysis"
 
-type NetworkData = {
+interface NetworkData {
   latency: number
   jitter: number
   packetLoss: number
@@ -29,7 +31,7 @@ type NetworkData = {
   }
 }
 
-type Alert = {
+interface Alert {
   id: string
   type: string
   severity: "critical" | "warning" | "informational"
@@ -37,7 +39,22 @@ type Alert = {
   timestamp: Date
 }
 
+interface SettingsData {
+  alertThresholds: {
+    latency: number
+    packetLoss: number
+    bandwidthUtilization: number
+    errorRates: number
+  }
+  notificationPreferences: {
+    email: boolean
+    sms: boolean
+    pushNotifications: boolean
+  }
+}
+
 export default function Dashboard() {
+  const [activeTab, setActiveTab] = useState("overview")
   const [networkData, setNetworkData] = useState<NetworkData>({
     latency: 20,
     jitter: 5,
@@ -58,7 +75,7 @@ export default function Dashboard() {
   })
 
   const [alerts, setAlerts] = useState<Alert[]>([])
-  const [settings, setSettings] = useState({
+  const [settings, setSettings] = useState<SettingsData>({
     alertThresholds: {
       latency: 50,
       packetLoss: 1,
@@ -71,8 +88,6 @@ export default function Dashboard() {
       pushNotifications: true,
     },
   })
-
-  const router = useRouter()
 
   useEffect(() => {
     // Simulate real-time updates
@@ -116,40 +131,37 @@ export default function Dashboard() {
     return () => clearInterval(interval)
   }, [])
 
-  const handleLogout = async () => {
-    await signOut({ redirect: false })
-    router.push("/login")
+  const renderContent = () => {
+    switch (activeTab) {
+      case "overview":
+        return <Overview   />
+      case "map":
+        return <MonitoringMap />
+      case "alerts":
+        return <AlertSection alerts={alerts} />
+      case "metrics":
+        return <NetworkMetrics />
+      case "health":
+        return <NetworkHealth data={networkData} />
+      case "performance":
+        return <PerformanceAnalysis data={networkData} />
+      case "predictive":
+        return <PredictiveMaintenance   />
+      case "analysis":
+        return <NetworkAnalysis />
+      case "settings":
+        return <Settings settings={settings} setSettings={setSettings} />
+      default:
+        return <Overview />
+    }
   }
 
   return (
-    <div
-      className="min-h-screen "
-     
-    >
-    
-
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-cyan-600 mb-6">Network Monitoring Dashboard</h1>
-        <Tabs defaultValue="health" className="space-y-4">
-          <TabsList>
-            <TabsTrigger value="health">Network Health</TabsTrigger>
-            <TabsTrigger value="alerts">Alert Status</TabsTrigger>
-            <TabsTrigger value="performance">Performance Analysis</TabsTrigger>
-            <TabsTrigger value="settings">Settings</TabsTrigger>
-          </TabsList>
-          <TabsContent value="health">
-            <NetworkHealth data={networkData} />
-          </TabsContent>
-          <TabsContent value="alerts">
-            <AlertStatus alerts={alerts} />
-          </TabsContent>
-          <TabsContent value="performance">
-            <PerformanceAnalysis data={networkData} />
-          </TabsContent>
-          <TabsContent value="settings">
-            <Settings settings={settings} setSettings={setSettings} />
-          </TabsContent>
-        </Tabs>
+    <div className="flex h-screen bg-background">
+      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+      <main className="flex-1 overflow-y-auto p-6">
+        <h1 className="text-3xl font-bold text-foreground mb-6">Network Monitoring Dashboard</h1>
+        {renderContent()}
       </main>
     </div>
   )

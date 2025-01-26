@@ -14,13 +14,13 @@ export default function Testimonials() {
                 name: "Sarah Johnson",
                 role: "CTO, TechCorp",
                 content:
-                  "The Network Alarm System has revolutionized how we monitor our infrastructure. It's a game-changer for our operations.",
+                  "The Network Alarm System has revolutionized how we monitor our infrastructure. It&apos;s a game-changer for our operations.",
               },
               {
                 name: "Michael Chen",
                 role: "Network Engineer, GlobalNet",
                 content:
-                  "I've never seen such a comprehensive and user-friendly monitoring solution. It's made my job so much easier.",
+                  "I&apos;ve never seen such a comprehensive and user-friendly monitoring solution. It&apos;s made my job so much easier.",
               },
               {
                 name: "Emily Rodriguez",
@@ -30,7 +30,7 @@ export default function Testimonials() {
               },
             ].map((testimonial, index) => (
               <div key={index} className="bg-gray-50 rounded-lg shadow-md p-6">
-                <p className="text-gray-600 mb-4">"{testimonial.content}"</p>
+                <p className="text-gray-600 mb-4">&quot;{testimonial.content}&quot;</p>
                 <div className="flex items-center">
                   <div className="flex-shrink-0 h-10 w-10 rounded-full bg-cyan-500" />
                   <div className="ml-3">
@@ -43,7 +43,6 @@ export default function Testimonials() {
           </div>
         </div>
       </section>
-    )
+    );
   }
-  
   

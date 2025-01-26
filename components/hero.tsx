@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { Button } from "./ui/button"
+import Link from "next/link";
+import { Button } from "./ui/button";
 
 export default function Hero() {
   return (
@@ -17,22 +17,27 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/50 z-10" />
       <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6">
-          Network Alarm System
+          Real-Time Network Monitoring
         </h1>
         <p className="text-lg md:text-xl text-cyan-200 mb-8">
-          Advanced monitoring and alert system for your network infrastructure
+          Gain instant insights into your network&apos;s performance with our
+          cutting-edge monitoring tools and AI features.
         </p>
         <div className="flex justify-center space-x-4">
-          <Link href='/login'>
-          <Button className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
-            Get Started
-          </Button></Link>
-          
-          <Button variant="outline" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-cyan-900 font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
+          <Link href="/login">
+            <Button className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
+              Get Started
+            </Button>
+          </Link>
+
+          <Button
+            variant="outline"
+            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-cyan-900 font-semibold px-6 py-3 rounded-lg transition-colors duration-200"
+          >
             Learn More
           </Button>
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -22,7 +22,7 @@ export function Navbar() {
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-2">
           <Bot size={32} />
-          <span className="text-2xl font-bold">D</span>
+          <span className="text-2xl font-bold">NetSentry</span>
         </Link>
         <nav>
           <ul className="flex space-x-4 items-center">
