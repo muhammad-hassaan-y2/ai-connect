@@ -1,60 +1,60 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Sidebar } from "@/components/Sidebar"
-import { Overview } from "@/components/Overview"
-import { MonitoringMap } from "@/components/MonitoringMap"
-import { AlertSection } from "@/components/AlertSection"
-import { NetworkMetrics } from "@/components/NetworkMetrics"
-import { PredictiveMaintenance } from "@/components/PredictiveMaintenance"
-import { NetworkHealth } from "@/components/NetworkHealth"
-import { PerformanceAnalysis } from "@/components/PerfomanceAnalysis"
-import { Settings } from "@/components/Settings"
-import { NetworkAnalysis } from "@/components/NetworkAnalysis"
+import { useState, useEffect } from "react";
+import { Sidebar } from "@/components/Sidebar";
+import { Overview } from "@/components/Overview";
+import { AlertSection } from "@/components/AlertSection";
+import { NetworkMetrics } from "@/components/NetworkMetrics";
+import { PredictiveMaintenance } from "@/components/PredictiveMaintenance";
+import { NetworkHealth } from "@/components/NetworkHealth";
+import { PerformanceAnalysis } from "@/components/PerfomanceAnalysis";
+import { Settings } from "@/components/Settings";
+import { NetworkAnalysis } from "@/components/NetworkAnalysis";
+import dynamic from "next/dynamic";
 
 interface NetworkData {
-  latency: number
-  jitter: number
-  packetLoss: number
-  bandwidthUtilization: number
-  throughput: number
-  errorRates: number
-  availability: number
-  rtt: number
-  congestionLevel: number
-  cpuUtilization: number
-  memoryUtilization: number
+  latency: number;
+  jitter: number;
+  packetLoss: number;
+  bandwidthUtilization: number;
+  throughput: number;
+  errorRates: number;
+  availability: number;
+  rtt: number;
+  congestionLevel: number;
+  cpuUtilization: number;
+  memoryUtilization: number;
   qosMetrics: {
-    voip: number
-    videoStreaming: number
-    fileTransfer: number
-  }
+    voip: number;
+    videoStreaming: number;
+    fileTransfer: number;
+  };
 }
 
 interface Alert {
-  id: string
-  type: string
-  severity: "critical" | "warning" | "informational"
-  message: string
-  timestamp: Date
+  id: string;
+  type: string;
+  severity: "critical" | "warning" | "informational";
+  message: string;
+  timestamp: Date;
 }
 
 interface SettingsData {
   alertThresholds: {
-    latency: number
-    packetLoss: number
-    bandwidthUtilization: number
-    errorRates: number
-  }
+    latency: number;
+    packetLoss: number;
+    bandwidthUtilization: number;
+    errorRates: number;
+  };
   notificationPreferences: {
-    email: boolean
-    sms: boolean
-    pushNotifications: boolean
-  }
+    email: boolean;
+    sms: boolean;
+    pushNotifications: boolean;
+  };
 }
 
 export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState("overview")
+  const [activeTab, setActiveTab] = useState("overview");
   const [networkData, setNetworkData] = useState<NetworkData>({
     latency: 20,
     jitter: 5,
@@ -72,9 +72,9 @@ export default function Dashboard() {
       videoStreaming: 90,
       fileTransfer: 85,
     },
-  })
+  });
 
-  const [alerts, setAlerts] = useState<Alert[]>([])
+  const [alerts, setAlerts] = useState<Alert[]>([]);
   const [settings, setSettings] = useState<SettingsData>({
     alertThresholds: {
       latency: 50,
@@ -87,7 +87,7 @@ export default function Dashboard() {
       sms: false,
       pushNotifications: true,
     },
-  })
+  });
 
   useEffect(() => {
     // Simulate real-time updates
@@ -110,7 +110,7 @@ export default function Dashboard() {
           videoStreaming: Math.floor(Math.random() * 15) + 85,
           fileTransfer: Math.floor(Math.random() * 20) + 80,
         },
-      }))
+      }));
 
       // Generate random alerts
       if (Math.random() > 0.7) {
@@ -123,38 +123,39 @@ export default function Dashboard() {
             | "informational",
           message: "Simulated alert message",
           timestamp: new Date(),
-        }
-        setAlerts((prevAlerts) => [...prevAlerts.slice(-9), newAlert])
+        };
+        setAlerts((prevAlerts) => [...prevAlerts.slice(-9), newAlert]);
       }
-    }, 5000) // Update every 5 seconds
+    }, 5000); // Update every 5 seconds
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
+  const MonitoringMap = dynamic(() => import("@/components/MonitoringMap"), { ssr: false });
 
   const renderContent = () => {
     switch (activeTab) {
       case "overview":
-        return <Overview   />
+        return <Overview />;
       case "map":
-        return <MonitoringMap />
+        return <MonitoringMap />;
       case "alerts":
-        return <AlertSection alerts={alerts} />
+        return <AlertSection alerts={alerts} />;
       case "metrics":
-        return <NetworkMetrics />
+        return <NetworkMetrics />;
       case "health":
-        return <NetworkHealth data={networkData} />
+        return <NetworkHealth data={networkData} />;
       case "performance":
-        return <PerformanceAnalysis data={networkData} />
+        return <PerformanceAnalysis data={networkData} />;
       case "predictive":
-        return <PredictiveMaintenance   />
+        return <PredictiveMaintenance />;
       case "analysis":
-        return <NetworkAnalysis />
+        return <NetworkAnalysis />;
       case "settings":
-        return <Settings settings={settings} setSettings={setSettings} />
+        return <Settings settings={settings} setSettings={setSettings} />;
       default:
-        return <Overview />
+        return <Overview />;
     }
-  }
+  };
 
   return (
     <div className="flex h-screen bg-background">
@@ -164,6 +165,5 @@ export default function Dashboard() {
         {renderContent()}
       </main>
     </div>
-  )
+  );
 }
-
