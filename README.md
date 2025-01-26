@@ -63,7 +63,7 @@ Copy
 }
 
 ### Route 3: Get Real-Time Data
-## Endpoint: GET /api/devices/<ip_address>
+ Endpoint: GET /api/devices/<ip_address>
 
 Description: Returns real-time data for a specific IP address.
 
@@ -81,7 +81,7 @@ Copy
   "last_updated": "2023-10-25T12:34:56.789012"
 }
 ### Route 4: Get Historical Data
-## Endpoint: GET /api/history/<ip_address>
+ Endpoint: GET /api/history/<ip_address>
 
 Description: Returns historical data for a specific IP address within a custom time range.
 
