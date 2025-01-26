@@ -1,33 +1,31 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
 
 type AuthFormProps = {
-  mode: "login" | "signup"
-}
+  mode: "login" | "signup";
+};
 
 export function AuthForm({ mode }: AuthFormProps) {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const router = useRouter()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    // Here you would typically send the credentials to your authentication API
-    // For this example, we'll just simulate a successful login/signup
-    console.log(`${mode} attempt with:`, { email, password })
+    e.preventDefault();
+    console.log(`${mode} attempt with:`, { email, password });
 
     // Simulate API call delay
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     // Redirect to dashboard after successful auth
-    router.push("/dashboard")
-  }
+    router.push("/dashboard");
+  };
 
   return (
     <Card className="w-full max-w-md mx-auto">
@@ -66,7 +64,7 @@ export function AuthForm({ mode }: AuthFormProps) {
       <CardFooter className="justify-center">
         {mode === "login" ? (
           <p>
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <a href="/signup" className="text-primary hover:underline">
               Sign up
             </a>
@@ -81,6 +79,5 @@ export function AuthForm({ mode }: AuthFormProps) {
         )}
       </CardFooter>
     </Card>
-  )
+  );
 }
-

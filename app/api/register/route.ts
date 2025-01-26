@@ -44,10 +44,19 @@ export async function POST(req: Request) {
       message: "User registered successfully",
       user: { id: user.id, name: user.name, email: user.email },
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error in /api/register:", error);
+
+    // Handle error more safely
+    if (error instanceof Error) {
+      return NextResponse.json(
+        { error: "Internal server error", details: error.message },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json(
-      { error: "Internal server error", details: error.message },
+      { error: "Internal server error", details: "An unknown error occurred" },
       { status: 500 }
     );
   }

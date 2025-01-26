@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Bell, Activity, BarChart2, Settings, Network } from "lucide-react"
+import { Bell, BarChart2, Settings, Network } from "lucide-react"
 
 export default function Dashboard() {
   return (

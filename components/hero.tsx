@@ -1,7 +1,9 @@
+import Link from "next/link"
+import { Button } from "./ui/button"
+
 export default function Hero() {
   return (
     <div className="relative min-h-screen flex items-center justify-center">
-      {/* Background Image */}
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -12,23 +14,25 @@ export default function Hero() {
           backgroundRepeat: "no-repeat",
         }}
       />
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/30 z-10" />
-
-      {/* Content */}
-      <div className="relative z-20 text-center px-4">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight">Network Alarm System</h1>
-        <p className="mt-6 text-lg md:text-xl text-cyan-200 max-w-2xl mx-auto">
+      <div className="absolute inset-0 bg-black/50 z-10" />
+      <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6">
+          Network Alarm System
+        </h1>
+        <p className="text-lg md:text-xl text-cyan-200 mb-8">
           Advanced monitoring and alert system for your network infrastructure
         </p>
-        <div className="mt-8">
-          <button className="bg-cyan-500 hover:bg-[#ed843b] text-white hover:text-black font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
+        <div className="flex justify-center space-x-4">
+          <Link href='/login'>
+          <Button className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
             Get Started
-          </button>
+          </Button></Link>
+          
+          <Button variant="outline" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-cyan-900 font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
+            Learn More
+          </Button>
         </div>
       </div>
     </div>
   )
 }
-

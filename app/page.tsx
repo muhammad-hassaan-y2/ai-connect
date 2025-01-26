@@ -1,14 +1,16 @@
-import Hero from "@/components/hero";
-import Image from "next/image";
-import { Navbar } from "@/components/Navbar"
-import { Footer } from "@/components/Footer"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import Hero from "@/components/hero"
+import Features from "@/components/Features"
+import Testimonials from "@/components/Testimonials"
+import CallToAction from "@/components/CallToAction"
 
 export default function HomePage() {
   return (
-    <Hero/>
-
+    <div className="min-h-screen">
+      <Hero />
+      <Features />
+      <Testimonials />
+      <CallToAction />
+    </div>
   )
 }
 
