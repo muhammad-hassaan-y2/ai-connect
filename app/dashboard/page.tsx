@@ -122,13 +122,22 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <nav className="bg-white shadow-sm">
+    <div
+      className="min-h-screen bg-[#020617]"
+      style={{
+        backgroundImage:
+          'url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/--73dCYeqK4Imf5ONk3myVKjZNodKZal.png")',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <nav className="bg-[#227f9d]/90 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
-                <span className="text-2xl font-bold text-gray-800">NetMonitor Pro</span>
+                <span className="text-2xl font-bold text-white">NetMonitor Pro</span>
               </div>
             </div>
             <div className="flex items-center">
@@ -141,7 +150,7 @@ export default function Dashboard() {
       </nav>
 
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-6">Network Monitoring Dashboard</h1>
+        <h1 className="text-3xl font-bold text-white mb-6">Network Monitoring Dashboard</h1>
         <Tabs defaultValue="health" className="space-y-4">
           <TabsList>
             <TabsTrigger value="health">Network Health</TabsTrigger>

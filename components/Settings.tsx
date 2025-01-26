@@ -53,67 +53,71 @@ export function Settings({ settings, setSettings }: SettingsProps) {
 
   return (
     <div className="space-y-4">
-      <Card>
+      <Card className="bg-[#227f9d]/90 text-white border-none">
         <CardHeader>
-          <CardTitle>Alert Thresholds</CardTitle>
+          <CardTitle className="text-white">Alert Thresholds</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="latency-threshold">Latency Threshold (ms)</Label>
+              <Label htmlFor="latency-threshold" className="text-white">Latency Threshold (ms)</Label>
               <Input
                 id="latency-threshold"
                 type="number"
                 value={localSettings.alertThresholds.latency}
                 onChange={(e) => handleThresholdChange("latency", e.target.value)}
+                className="bg-white/10 border-white/20 text-white placeholder-white/50"
               />
             </div>
             <div>
-              <Label htmlFor="packet-loss-threshold">Packet Loss Threshold (%)</Label>
+              <Label htmlFor="packet-loss-threshold" className="text-white">Packet Loss Threshold (%)</Label>
               <Input
                 id="packet-loss-threshold"
                 type="number"
                 value={localSettings.alertThresholds.packetLoss}
                 onChange={(e) => handleThresholdChange("packetLoss", e.target.value)}
+                className="bg-white/10 border-white/20 text-white placeholder-white/50"
               />
             </div>
             <div>
-              <Label htmlFor="bandwidth-utilization-threshold">Bandwidth Utilization Threshold (%)</Label>
+              <Label htmlFor="bandwidth-utilization-threshold" className="text-white">Bandwidth Utilization Threshold (%)</Label>
               <Input
                 id="bandwidth-utilization-threshold"
                 type="number"
                 value={localSettings.alertThresholds.bandwidthUtilization}
                 onChange={(e) => handleThresholdChange("bandwidthUtilization", e.target.value)}
+                className="bg-white/10 border-white/20 text-white placeholder-white/50"
               />
             </div>
             <div>
-              <Label htmlFor="error-rates-threshold">Error Rates Threshold (%)</Label>
+              <Label htmlFor="error-rates-threshold" className="text-white">Error Rates Threshold (%)</Label>
               <Input
                 id="error-rates-threshold"
                 type="number"
                 value={localSettings.alertThresholds.errorRates}
                 onChange={(e) => handleThresholdChange("errorRates", e.target.value)}
+                className="bg-white/10 border-white/20 text-white placeholder-white/50"
               />
             </div>
           </div>
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="bg-[#227f9d]/90 text-white border-none">
         <CardHeader>
-          <CardTitle>Notification Preferences</CardTitle>
+          <CardTitle className="text-white">Notification Preferences</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
-            <Label htmlFor="email-notifications">Email Notifications</Label>
+            <Label htmlFor="email-notifications" className="text-white">Email Notifications</Label>
             <Switch
-              id="email-notifications"
+              id=" email-notifications"
               checked={localSettings.notificationPreferences.email}
               onCheckedChange={() => handleNotificationChange("email")}
             />
           </div>
           <div className="flex items-center justify-between">
-            <Label htmlFor="sms-notifications">SMS Notifications</Label>
+            <Label htmlFor="sms-notifications" className="text-white">SMS Notifications</Label>
             <Switch
               id="sms-notifications"
               checked={localSettings.notificationPreferences.sms}
@@ -121,7 +125,7 @@ export function Settings({ settings, setSettings }: SettingsProps) {
             />
           </div>
           <div className="flex items-center justify-between">
-            <Label htmlFor="push-notifications">Push Notifications</Label>
+            <Label htmlFor="push-notifications" className="text-white">Push Notifications</Label>
             <Switch
               id="push-notifications"
               checked={localSettings.notificationPreferences.pushNotifications}
@@ -131,10 +135,9 @@ export function Settings({ settings, setSettings }: SettingsProps) {
         </CardContent>
       </Card>
 
-      <Button onClick={handleSave} className="w-full">
+      <Button onClick={handleSave} className="bg-white text-[#227f9d] hover:bg-white/90">
         Save Settings
       </Button>
     </div>
   )
 }
-

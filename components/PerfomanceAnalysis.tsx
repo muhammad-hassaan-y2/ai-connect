@@ -18,89 +18,89 @@ type PerformanceAnalysisProps = {
 
 export function PerformanceAnalysis({ data }: PerformanceAnalysisProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {/* Network Availability */}
-      <Card>
+      <Card className="bg-[#227f9d]/90 text-white border-none">
         <CardHeader>
-          <CardTitle>Network Availability</CardTitle>
+          <CardTitle className="text-white">Network Availability</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{data.availability}%</div>
-          <Progress value={data.availability} max={100} className="mt-2" />
+          <div className="text-2xl font-bold text-white">{data.availability}%</div>
+          <Progress value={data.availability} max={100} className="mt-2 bg-white/20 [&>div]:bg-white" />
         </CardContent>
       </Card>
 
       {/* Round-Trip Time */}
-      <Card>
+      <Card className="bg-[#227f9d]/90 text-white border-none">
         <CardHeader>
-          <CardTitle>Round-Trip Time (RTT)</CardTitle>
+          <CardTitle className="text-white">Round-Trip Time (RTT)</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{data.rtt} ms</div>
-          <Progress value={data.rtt} max={100} className="mt-2" />
+          <div className="text-2xl font-bold text-white">{data.rtt} ms</div>
+          <Progress value={data.rtt} max={100} className="mt-2 bg-white/20 [&>div]:bg-white" />
         </CardContent>
       </Card>
 
       {/* Network Congestion */}
-      <Card>
+      <Card className="bg-[#227f9d]/90 text-white border-none">
         <CardHeader>
-          <CardTitle>Network Congestion</CardTitle>
+          <CardTitle className="text-white">Network Congestion</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{data.congestionLevel}%</div>
-          <Progress value={data.congestionLevel} max={100} className="mt-2" />
+          <div className="text-2xl font-bold text-white">{data.congestionLevel}%</div>
+          <Progress value={data.congestionLevel} max={100} className="mt-2 bg-white/20 [&>div]:bg-white" />
         </CardContent>
       </Card>
 
       {/* CPU Utilization */}
-      <Card>
+      <Card className="bg-[#227f9d]/90 text-white border-none">
         <CardHeader>
-          <CardTitle>CPU Utilization</CardTitle>
+          <CardTitle className="text-white">CPU Utilization</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{data.cpuUtilization}%</div>
-          <Progress value={data.cpuUtilization} max={100} className="mt-2" />
+          <div className="text-2xl font-bold text-white">{data.cpuUtilization}%</div>
+          <Progress value={data.cpuUtilization} max={100} className="mt-2 bg-white/20 [&>div]:bg-white" />
         </CardContent>
       </Card>
 
       {/* Memory Utilization */}
-      <Card>
+      <Card className="bg-[#227f9d]/90 text-white border-none">
         <CardHeader>
-          <CardTitle>Memory Utilization</CardTitle>
+          <CardTitle className="text-white">Memory Utilization</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{data.memoryUtilization}%</div>
-          <Progress value={data.memoryUtilization} max={100} className="mt-2" />
+          <div className="text-2xl font-bold text-white">{data.memoryUtilization}%</div>
+          <Progress value={data.memoryUtilization} max={100} className="mt-2 bg-white/20 [&>div]:bg-white" />
         </CardContent>
       </Card>
 
       {/* QoS Metrics */}
-      <Card>
+      <Card className="bg-[#227f9d]/90 text-white border-none">
         <CardHeader>
-          <CardTitle>QoS Metrics</CardTitle>
+          <CardTitle className="text-white">QoS Metrics</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className="space-y-2">
             <div>
-              <div className="flex justify-between mb-1">
-                <span>VoIP</span>
-                <span>{data.qosMetrics.voip}%</span>
+              <div className="flex justify-between">
+                <span className="text-white">VoIP</span>
+                <span className="text-white">{data.qosMetrics.voip}%</span>
               </div>
-              <Progress value={data.qosMetrics.voip} max={100} />
+              <Progress value={data.qosMetrics.voip} max={100} className="mt-1 bg-white/20 [&>div]:bg-white" />
             </div>
             <div>
-              <div className="flex justify-between mb-1">
-                <span>Video Streaming</span>
-                <span>{data.qosMetrics.videoStreaming}%</span>
+              <div className="flex justify-between">
+                <span className="text-white">Video Streaming</span>
+                <span className="text-white">{data.qosMetrics.videoStreaming}%</span>
               </div>
-              <Progress value={data.qosMetrics.videoStreaming} max={100} />
+              <Progress value={data.qosMetrics.videoStreaming} max={100} className="mt-1 bg-white/20 [&>div]:bg-white" />
             </div>
             <div>
-              <div className="flex justify-between mb-1">
-                <span>File Transfer</span>
-                <span>{data.qosMetrics.fileTransfer}%</span>
+              <div className="flex justify-between">
+                <span className="text-white">File Transfer</span>
+                <span className="text-white">{data.qosMetrics.fileTransfer}%</span>
               </div>
-              <Progress value={data.qosMetrics.fileTransfer} max={100} />
+              <Progress value={data.qosMetrics.fileTransfer} max={100} className="mt-1 bg-white/20 [&>div]:bg-white" />
             </div>
           </div>
         </CardContent>

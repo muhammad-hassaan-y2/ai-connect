@@ -17,34 +17,33 @@ export function AlertStatus({ alerts }: AlertStatusProps) {
   const getSeverityColor = (severity: Alert["severity"]) => {
     switch (severity) {
       case "critical":
-        return "bg-red-500"
+        return "bg-red-900/50 text-red-50" // Updated for critical
       case "warning":
-        return "bg-yellow-500"
+        return "bg-yellow-900/50 text-yellow-50" // Updated for warning
       case "informational":
-        return "bg-blue-500"
+        return "bg-blue-900/50 text-blue-50" // Updated for informational
       default:
-        return "bg-gray-500"
+        return "bg-gray-500 text-white" // Default case
     }
   }
 
   return (
-    <Card>
+    <Card className="bg-[#227f9d]/90 text-white border-none">
       <CardHeader>
-        <CardTitle>Active Alerts</CardTitle>
+        <CardTitle className="text-white">Active Alerts</CardTitle>
       </CardHeader>
       <CardContent>
         {alerts.length === 0 ? (
-          <p>No active alerts</p>
+          <div className="text-center text-white/70">No active alerts</div>
         ) : (
           <ul className="space-y-2">
             {alerts.map((alert) => (
-              <li key={alert.id} className="flex items-center justify-between p-2 bg-gray-100 rounded">
-                <div>
-                  <Badge className={getSeverityColor(alert.severity)}>{alert.severity}</Badge>
-                  <span className="ml-2 font-medium">{alert.type}</span>
-                  <p className="text-sm text-gray-600">{alert.message}</p>
+              <li key={alert.id} className={`p-4 rounded-md ${getSeverityColor(alert.severity)}`}>
+                <div className="flex justify-between">
+                  <span className="font-bold">{alert.type}</span>
+                  <span>{alert.timestamp.toLocaleString()}</span>
                 </div>
-                <span className="text-sm text-gray-500">{alert.timestamp.toLocaleTimeString()}</span>
+                <p className="mt-1">{alert.message}</p>
               </li>
             ))}
           </ul>
@@ -53,4 +52,3 @@ export function AlertStatus({ alerts }: AlertStatusProps) {
     </Card>
   )
 }
-
